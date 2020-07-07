@@ -1,5 +1,6 @@
 set arraysize 15
 alter session set current_schema=oe;
+-- Run as F5
 SET AUTOTRACE ON STATISTICS
 
 select * from order_items ;

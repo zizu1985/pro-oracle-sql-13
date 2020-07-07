@@ -1,5 +1,12 @@
-/* Listing 3-1 */
+/* 
+    Listing 3-1 
+    
+    Te same query, ale rozne upakowanie danych => 2 rozne plany
 
+
+*/
+
+drop table t1 purge;
 create table t1 as
 select trunc((rownum-1)/100) id,
 rpad(rownum,100) t_pad
@@ -19,5 +26,6 @@ where rownum <= 10000;
 create index t2_idx1 on t2(id);
 
 exec dbms_stats.gather_table_stats(user,'t2',method_opt=>'FOR ALL COLUMNS SIZE 1',cascade=>TRUE);
+
 
 
